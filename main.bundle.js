@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- header -->\n<!-- http://sercappelle.be/#start -->\n<!-- http://sumitridhal.github.io/ -->\n<app-header *ngIf=\"aURL!='/home'\"></app-header>\n<div class=\"article\">\n  <router-outlet></router-outlet>\n</div>\n<app-footer></app-footer>\n"
+module.exports = "<app-header *ngIf=\"aURL!='/home'\"></app-header>\n<div class=\"article\">\n  <router-outlet></router-outlet>\n</div>\n<app-footer></app-footer>\n"
 
 /***/ }),
 
@@ -884,11 +884,10 @@ var HomeComponent = (function () {
             ]
         };
     }
-    // @HostListener("window:scroll", ['$event'])
-    // onWindowScroll($event: any): void {
-    //   this.topOffSet = window.pageYOffset;
-    //   //window.scrollTo(0, this.topOffSet+662);
-    // }
+    HomeComponent.prototype.onWindowScroll = function ($event) {
+        this.topOffSet = window.pageYOffset;
+        //window.scrollTo(0, this.topOffSet+662);
+    };
     HomeComponent.prototype.goToDiv = function (id) {
         var element = document.querySelector("#" + id);
         element.scrollIntoView(element);
@@ -896,6 +895,12 @@ var HomeComponent = (function () {
     HomeComponent.prototype.ngOnInit = function () { };
     return HomeComponent;
 }());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* HostListener */])("window:scroll", ['$event']),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], HomeComponent.prototype, "onWindowScroll", null);
 HomeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Component */])({
         selector: 'app-home',
